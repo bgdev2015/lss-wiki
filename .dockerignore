@@ -2,7 +2,6 @@
 Dockerfile
 .dockerignore
 docker-compose.yml
-nginx.conf
 serve.ps1
 README.md
 .git
