@@ -459,3 +459,11 @@ html[data-theme="light"] .tag.coin { color: #8a6208; }
   .card { box-shadow: none; background: #fff; border: 1px solid #ccc; }
   body { background: #fff; color: #000; }
 }
+
+/* Anker-Sprung aus der Suche: Abstand unter klebender Kopfzeile + kurzer Blitz */
+h2, h3, .card, .combo { scroll-margin-top: 84px; }
+.anchor-flash { animation: anchorFlash 2s ease-out; border-radius: 10px; }
+@keyframes anchorFlash {
+  0% { background: rgba(var(--accent-rgb), .30); box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .60); }
+  100% { background: transparent; box-shadow: none; }
+}

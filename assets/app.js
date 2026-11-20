@@ -68,22 +68,57 @@
     a.addEventListener("click", () => nav.classList.remove("open"))
   );
 
-  /* ---------- Rendering ---------- */
+  /* ---------- Rendering (Hash-Format: "#sektion" oder "#sektion/anker") ---------- */
   function currentRoute() {
     const h = location.hash.replace(/^#/, "");
-    return WIKI.sections.some(s => s.id === h) ? h : "start";
+    const slash = h.indexOf("/");
+    const id = slash === -1 ? h : h.slice(0, slash);
+    const anchor = slash === -1 ? null : h.slice(slash + 1);
+    if (WIKI.sections.some(s => s.id === id)) return { id, anchor };
+    return { id: "start", anchor: null };
+  }
+
+  function slugify(text) {
+    const s = text
+      .replace(/ä/gi, "ae").replace(/ö/gi, "oe").replace(/ü/gi, "ue").replace(/ß/g, "ss")
+      .replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-+|-+$/g, "").toLowerCase();
+    return s || "abschnitt";
+  }
+
+  /* Vergibt stabile Anker-IDs an alle h3-Abschnitte einer Sektion
+     (identisch angewendet beim Such-Index und beim Rendern). */
+  function applyAnchors(sec, root) {
+    const used = new Set();
+    const map = {};
+    root.querySelectorAll("h3").forEach(h3 => {
+      const base = sec.id + "--" + slugify(h3.textContent);
+      let a = base, i = 2;
+      while (used.has(a)) a = base + "-" + i++;
+      used.add(a);
+      map[h3.textContent] = a;
+      h3.id = a;
+    });
+    return map;
   }
 
   function render() {
-    const id = currentRoute();
+    const { id, anchor } = currentRoute();
     const sec = WIKI.sections.find(s => s.id === id);
     document.title = sec.title + " – LSS-Wiki";
-    window.scrollTo(0, 0);
     app.innerHTML = `<article class="page">${sec.html}</article>`;
+    applyAnchors(sec, app);
     nav.querySelectorAll("a").forEach(a =>
       a.classList.toggle("active", a.dataset.nav === id)
     );
     wireChips();
+    const el = anchor ? document.getElementById(anchor) : null;
+    if (el) {
+      el.scrollIntoView({ block: "start" });
+      el.classList.add("anchor-flash");
+      setTimeout(() => el.classList.remove("anchor-flash"), 2000);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 
   /* Flache Filter-Chips innerhalb einer Seite */
@@ -100,13 +135,41 @@
     });
   }
 
-  /* ---------- Suche ---------- */
-  const INDEX = WIKI.sections.map(s => ({
-    id: s.id,
-    title: s.title,
-    icon: s.icon || "📄",
-    text: s.html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
-  }));
+  /* ---------- Suche (Index je h3-Abschnitt, mit Anker) ---------- */
+  const INDEX = [];
+  WIKI.sections.forEach(sec => {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = sec.html;
+    const anchors = applyAnchors(sec, tmp);
+
+    const covered = new Set();
+    tmp.querySelectorAll("h3").forEach(h3 => {
+      const parts = [h3.textContent];
+      let n = h3.nextElementSibling;
+      while (n && n.tagName !== "H3") {
+        covered.add(n);
+        parts.push(n.textContent);
+        n = n.nextElementSibling;
+      }
+      INDEX.push({
+        sec,
+        anchor: anchors[h3.textContent] || null,
+        title: h3.textContent.replace(/^[^\p{L}\p{N}]+/u, "").trim() || h3.textContent.trim(),
+        text: parts.join(" ").replace(/\s+/g, " ")
+      });
+    });
+
+    /* Rest: Einleitung/Inhalt außerhalb der h3-Blöcke */
+    const rest = [];
+    tmp.childNodes.forEach(node => {
+      if (node.nodeType === 1 && !covered.has(node)) rest.push(node.textContent);
+      else if (node.nodeType === 3 && node.textContent.trim()) rest.push(node.textContent);
+    });
+    const restText = rest.join(" ").replace(/\s+/g, " ").trim();
+    if (restText && restText.split(" ").length > 15) {
+      INDEX.push({ sec, anchor: null, title: sec.title, text: restText });
+    }
+  });
 
   function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 
@@ -155,8 +218,11 @@
           words.forEach(w => {
             excerpt = excerpt.replace(new RegExp("(" + esc(w) + ")", "gi"), "<mark>$1</mark>");
           });
-          return `<a class="sr-item" href="#${h.entry.id}" data-close>
-            <h4><span>${h.entry.icon}</span>${h.entry.title}</h4>
+          const e = h.entry;
+          const href = "#" + e.sec.id + (e.anchor ? "/" + e.anchor : "");
+          const label = e.anchor ? `${e.sec.title} › ${e.title}` : e.sec.title;
+          return `<a class="sr-item" href="${href}" data-close>
+            <h4><span>${e.sec.icon || "📄"}</span>${label}</h4>
             <p>… ${excerpt} …</p></a>`;
         }).join("")
       : `<div class="sr-empty">Keine Treffer für <strong>„${query}“</strong></div>`;
