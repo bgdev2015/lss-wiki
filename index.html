@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSS-Wiki – Leitstellenspiel.de</title>
+  <meta name="description" content="Inoffizielles Wiki zum Leitstellenspiel.de – Gebäude, Wachen, Ausbau, Fahrzeuge, Personal und Tipps. Komplett ohne Server nutzbar.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2313253f'/><text y='0.9em' x='50%' text-anchor='middle' font-size='58'>🚨</text></svg>">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <!-- Dekorativer Hintergrund (Glasoptik) -->
+  <div class="bg-fx" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <header class="topbar glass">
+    <button class="brand" data-nav="start" title="Zur Startseite">
+      <span class="brand-mark">🚨</span>
+      <span class="brand-text">LSS-Wiki<small>Leitstellenspiel.de</small></span>
+    </button>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Suchen … (z. B. HLF, NEF, Ausbau)" autocomplete="off">
+      <kbd>/</kbd>
+    </div>
+    <button id="accent-toggle" class="icon-btn" title="Farbstil wechseln (Rot/Blau)" aria-label="Farbstil wechseln">🔴</button>
+    <button id="theme-toggle" class="icon-btn" title="Hell/Dunkel umschalten" aria-label="Hell/Dunkel umschalten">🌙</button>
+    <button id="menu-btn" class="icon-btn" title="Menü" aria-label="Menü öffnen">☰</button>
+  </header>
+
+  <nav id="mainnav" class="glass" aria-label="Hauptnavigation"><!-- wird per JS befüllt (flache Ebene) --></nav>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <p>
+      <strong>Inoffizielles Spieler-Wiki</strong> zum Browsergame <a href="https://www.leitstellenspiel.de" target="_blank" rel="noopener">leitstellenspiel.de</a>.
+      Datenstand: November 2026 · Quellen: offizielles Wiki (<a href="https://wiki.leitstellenspiel.de" target="_blank" rel="noopener">wiki.leitstellenspiel.de</a>), LSS-Manager (<a href="https://lss-manager.de" target="_blank" rel="noopener">lss-manager.de</a>), Spielinterne Angaben &amp; Community.
+      Änderungen im Spiel sind jederzeit möglich – ohne Gewähr.
+    </p>
+    <div class="footer-meta">
+      <p class="footer-tech">Reines statisches Web: HTML + CSS + JavaScript. Keine Datenbank, kein PHP, kein Server nötig.</p>
+      <span class="version-badge" id="wiki-version" title="Wiki-Version">V 0.0.2</span>
+    </div>
+  </footer>
+
+  <div id="search-results" class="search-overlay" hidden>
+    <div class="search-panel glass">
+      <div class="search-head">
+        <span>Suchergebnisse</span>
+        <button id="search-close" class="icon-btn" aria-label="Suche schließen">✕</button>
+      </div>
+      <div id="search-list"></div>
+    </div>
+  </div>
+
+  <script src="assets/data-part1.js"></script>
+  <script src="assets/data-part2.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

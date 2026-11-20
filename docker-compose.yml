@@ -1,0 +1,8 @@
+services:
+  lss-wiki:
+    build: .
+    image: lss-wiki:latest
+    container_name: lss-wiki
+    ports:
+      - "8080:80"
+    restart: unless-stopped

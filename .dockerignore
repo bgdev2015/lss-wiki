@@ -1,0 +1,10 @@
+# Nicht ins Image packen
+Dockerfile
+.dockerignore
+docker-compose.yml
+nginx.conf
+serve.ps1
+README.md
+.git
+.gitignore
+*.md
