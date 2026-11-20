@@ -87,3 +87,10 @@ Die Volltextsuche indiziert alle Seiten automatisch.
 
 - Das Wiki ist ein **inoffizielles Spielerprojekt** zu Leitstellenspiel.de (Markenrechte beim Betreiber).
 - Kostendaten können sich mit Updates ändern → Offizielles Wiki als Referenz.
+
+## Workflow & Versionierung
+
+- Entwicklung lokal, Sicherung per `git push` nach GitHub (Single Source of Truth).
+- Deployment auf dem Server: `cd ~/lss-wiki && git pull && docker compose up -d --build` (Port 8080).
+- Versionsnummer im Footer (`id="wiki-version"`): Schema **V x.y.z**, +1 **pro Deployment** (nie bei rein lokalen Änderungen), Übertrag bei 999 (`V 0.0.999 -> V 0.1.0`, `V 0.999.999 -> V 1.0.0`).
+- Pro Deployment wird ein Git-Tag **`vX.Y.Z`** gesetzt (erstmals ab **V 0.0.4**) – damit ist jederzeit nachvollziehbar, welcher Stand auf dem Server läuft, und ein Rollback ist per `git checkout vX.Y.Z` möglich.
