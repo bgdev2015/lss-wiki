@@ -113,14 +113,15 @@
     wireChips();
     const el = anchor ? document.getElementById(anchor) : null;
     if (el) {
-      /* Liegt der Anker in einem versteckten Chip-Panel, dieses aktivieren */
-      const panel = el.closest(".chip-panel");
-      if (panel) {
-        const group = panel.closest("[data-chipgroup]");
-        if (group) {
-          group.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.chip === panel.dataset.panel));
-          group.querySelectorAll(".chip-panel").forEach(p => p.classList.toggle("active", p.dataset.panel === panel.dataset.panel));
-        }
+      /* Liegt der Anker in (möglicherweise verschachtelten) versteckten
+         Chip-Panels, jedes übergeordnete Panel aktivieren */
+      let p = el.closest(".chip-panel");
+      while (p) {
+        const group = p.closest("[data-chipgroup]");
+        if (!group) break;
+        group.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.chip === p.dataset.panel));
+        group.querySelectorAll(".chip-panel").forEach(pi => pi.classList.toggle("active", pi.dataset.panel === p.dataset.panel));
+        p = group.parentElement ? group.parentElement.closest(".chip-panel") : null;
       }
       el.scrollIntoView({ block: "start" });
       el.classList.add("anchor-flash");
