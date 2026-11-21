@@ -113,6 +113,15 @@
     wireChips();
     const el = anchor ? document.getElementById(anchor) : null;
     if (el) {
+      /* Liegt der Anker in einem versteckten Chip-Panel, dieses aktivieren */
+      const panel = el.closest(".chip-panel");
+      if (panel) {
+        const group = panel.closest("[data-chipgroup]");
+        if (group) {
+          group.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.chip === panel.dataset.panel));
+          group.querySelectorAll(".chip-panel").forEach(p => p.classList.toggle("active", p.dataset.panel === panel.dataset.panel));
+        }
+      }
       el.scrollIntoView({ block: "start" });
       el.classList.add("anchor-flash");
       setTimeout(() => el.classList.remove("anchor-flash"), 2000);

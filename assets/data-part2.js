@@ -303,385 +303,302 @@
 
   /* ============================== FAHRZEUGLISTE ============================== */
   add("fahrzeuge", "🚒", "Fahrzeugliste", `
-  <section class="card glass">
+  <section class="card glass" data-chipgroup>
     <h2>Alle Fahrzeuge im Überblick</h2>
-    <p>Gruppiert nach Organisation und Standorterweiterung. Weiter unten: <strong>Anschaffungskosten</strong> aller Fahrzeuge sowie <strong>Min./Max.-Besatzung und Pflicht-Lehrgänge</strong>. Kauflimits pro Fahrzeuggattung stehen direkt im Spiel. Alle Kosten zentral in der Tabelle: <a href="#kosten">Baukosten</a>.</p>
+    <p>Jede Organisation in einem eigenen Tab: <strong>wo stationierbar</strong>, <strong>Anschaffungskosten</strong>, <strong>Besatzung</strong> und der <strong>Pflicht-Lehrgang</strong> je Fahrzeuggattung – abgeglichen mit den Live-Spieldaten (November 2026). Kauflimits pro Fahrzeuggattung stehen direkt im Spiel. Alle Kosten zentral: <a href="#kosten">Baukosten</a>.</p>
 
-    <h3>🚒 Feuerwehr</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Feuerwache / Kleinwache", "LF · HLF · TLF 3000 / TLF 16-25 · DLK 23 · ELW 1 · ELW 2 · RW · GW-Gefahrgut · GW-Messtechnik · GW-Atemschutz · GW-Höhenrettung · GW-Öl · GW-Dekon-P · MTW · SW 1000 / SW 2000 · Tankwagen · Feuerwehrkran · Gerätewagen"])}
-        ${tr(["Erweiterung Großlüfter", "Lüfter (mobile Großventilatoren)"])}
-        ${tr(["Erweiterung NEA 50 / 200", "NEA50-Anhänger · NEA200-Anhänger"])}
-        ${tr(["Erweiterung Drohneneinheit", "MTF-Drohne · ELW-Drohne · ELW-2-Drohne · RC-Drohne"])}
-        ${tr(["Lagerraum / Logistik", "Logistikfahrzeuge · Rollcontainer-Module (RC-Module)"])}
-        ${tr(["Abrollbehälter", "Wechselladerfahrzeug (WLF) + diverse AB (Lüfter, Dekon-P, Logistik, Schiene …)"])}
-        ${tr(["Flughafenfeuerwehr", "Flugfeldlöschfahrzeug (FLF) · Rettungstreppenfahrzeug"])}
-        ${tr(["Werkfeuerwehr", "GW-Werkfeuerwehr · ULF mit Löscharm · TM 50 · Turbolöscher"])}
-        ${tr(["Verpflegungsdienst", "GW-Verpflegung · GW-Küche · MTW-Verpflegung · Feldkochherd (FKH)"])}
-        ${tr(["Bahnrettung", "RW-Schiene · HLF-Schiene · AB-Schiene"])}
-      </tbody>
-    </table></div>
+    <div class="chip-row">
+      <button class="chip" data-chip="ff">🚒 Feuerwehr</button>
+      <button class="chip" data-chip="rd">🚑 Rettungsdienst</button>
+      <button class="chip" data-chip="pol">👮 Polizei</button>
+      <button class="chip" data-chip="thw">🔧 THW</button>
+      <button class="chip" data-chip="seg">🧪 SEG</button>
+      <button class="chip" data-chip="wrbr">🚤 Wasser-/Seenot-/Bergrettung</button>
+    </div>
 
-    <h3>🚑 Rettungsdienst</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Rettungswache / RD-Ausbau", "RTW · NEF · KTW · GRTW · NAW · ITW"])}
-        ${tr(["Rettungswache (Leitung)", "KdoW LNA · KdoW OrgL"])}
-        ${tr(["Rettungshubschrauber-Station", "Rettungstransporthubschrauber (RTH) · Rettungshubschrauber Winde"])}
-      </tbody>
-    </table></div>
+    <!-- ============ FEUERWEHR ============ -->
+    <div class="chip-panel" data-panel="ff">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Feuerwache / Kleinwache", "LF-Familie (LF 10 · LF 20 · LF 8/6 · LF 20/16 · LF 10/6 · LF 16-TS) · TSF-W · KLF / MLF · HLF 10 · HLF 20 · TLF-Familie · DLK 23 · ELW 1 / ELW 2 · RW · GW-Atemschutz · GW-Öl · GW-Messtechnik · GW-Gefahrgut · GW-Höhenrettung · GW-L2-Wasser · MTW · SW 1000 / SW 2000 / SW 2000-Tr / SW-Kats · Feuerwehrkran · WLF + AB · Tankwagen / Kleintankwagen · GTLF · PTLF 4000 · SLF · GW-Tierrettung"])}
+          ${tr(["Erweiterung Großlüfter", "GW-Lüfter · Anh. Lüfter · AB-Lüfter"])}
+          ${tr(["Erweiterung NEA 50 / 200", "NEA50 · NEA200 · AB-NEA50 · AB-NEA200"])}
+          ${tr(["Erweiterung Drohneneinheit", "MTF-Drohne · ELW-Drohne · ELW-2-Drohne"])}
+          ${tr(["Erweiterung Wasserrettung", "GW-Wasserrettung · GW-Taucher · MZB"])}
+          ${tr(["Lagerraum / Logistik", "GW-L1 · GW-L2 · MTF-L · LF-L · AB-L (Rollcontainer-Module)"])}
+          ${tr(["Abrollbehälter-Stellplätze", "WLF + AB-Auswahl (Rüst · Atemschutz · Öl · Schlauch · Dekon-P · Gefahrgut · Einsatzleitung · MZB · Tank · Lösch · Lüfter · Schiene · Küche · Sonderlöschmittel · Wasser/Schaum · NEA50 · NEA200 · Waldbrand)"])}
+          ${tr(["Flughafenfeuerwehr", "Flugfeldlöschfahrzeug (FLF) · Rettungstreppenfahrzeug"])}
+          ${tr(["Werkfeuerwehr", "GW-Werkfeuerwehr · ULF mit Löscharm · TM 50 · Turbolöscher"])}
+          ${tr(["Verpflegungsdienst", "GW-Verpflegung · GW-Küche · MTW-Verpflegung · Feldkochherd (FKH) · AB-Küche"])}
+          ${tr(["Waldbrandbekämpfung", "TLF 3000 W · TLF 5000 W · GTLF 10000 W · GW-Waldbrand · Anh. Waldbrand · AB-Waldbrand"])}
+          ${tr(["Bahnrettung", "RW-Schiene · HLF Schiene · AB-Schiene"])}
+        </tbody>
+      </table></div>
 
-    <h3>👮 Polizei</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Polizeiwache / Kleinwache", "FuStW · Polizeimotorrad · FuStW (DGL) · DHuFüKw · Zivilstreifenwagen · GefKw"])}
-        ${tr(["Bereitschaftspolizei", "FüKw · LeBefKw · GruKw · GefKw · WaWe · SEK-ZF · SEK-MTF · MEK-ZF · MEK-MTF · DHuFüKw"])}
-        ${tr(["Polizeireiterstaffel", "Anh. Pferdetransport · Pferdetransporter (klein/groß) · Zugfahrzeug Pferdetransport"])}
-        ${tr(["Polizeihubschrauber-Station", "Polizeihubschrauber · Außenlastbehälter"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["LF-Familie (LF 10 · LF 20 · LF 8/6 · LF 20/16 · LF 10/6 · LF 16-TS)", "5.000", "25", "1–9", "–"])}
+          ${tr(["TSF-W", "5.000", "25", "1–6", "–"])}
+          ${tr(["KLF / MLF", "5.000", "25", "1–6", "–"])}
+          ${tr(["HLF 10 / HLF 20", "20.000", "25", "1–9", "–"])}
+          ${tr(["TLF 2000 · 3000 · 4000 · 8/8 · 8/18 · 16/24-Tr · TLF 16 · 16/45 · 20/40 (-SL)", "5.000", "25", "1–3", "–"])}
+          ${tr(["TLF 16/25", "5.000", "25", "1–6", "–"])}
+          ${tr(["Drehleiter (DLK 23)", "10.000", "30", "1–3", "–"])}
+          ${tr(["Einsatzleitwagen 1 (ELW 1)", "10.000", "25", "1–3", "–"])}
+          ${tr(["Einsatzleitwagen 2 (ELW 2)", "25.500", "25", "1–6", "ELW 2"])}
+          ${tr(["Rüstwagen (RW)", "12.180", "25", "1–3", "–"])}
+          ${tr(["GW-Atemschutz", "11.680", "25", "1–3", "–"])}
+          ${tr(["GW-Öl", "12.000", "25", "1–3", "–"])}
+          ${tr(["GW-Messtechnik", "18.300", "25", "1–3", "GW-Messtechnik"])}
+          ${tr(["GW-Gefahrgut", "19.200", "25", "1–3", "GW-Gefahrgut"])}
+          ${tr(["GW-Höhenrettung", "19.500", "25", "1–9", "Höhenrettung"])}
+          ${tr(["GW-L2-Wasser", "17.300", "25", "1–3", "–"])}
+          ${tr(["SW 1000", "17.300", "25", "1–3", "–"])}
+          ${tr(["SW 2000", "17.300", "25", "1–6", "–"])}
+          ${tr(["SW 2000-Tr / SW-Kats", "17.300", "25", "1–3", "–"])}
+          ${tr(["Mannschaftstransportfahrzeug (MTW)", "2.500", "12", "1–9", "–"])}
+          ${tr(["Feuerwehrkran (FwK)", "30.000", "25", "1–2", "Feuerwehrkran"])}
+          ${tr(["Wechselladerfahrzeug (WLF)", "5.000", "12", "1–3", "Wechsellader"])}
+          ${tr(["Standard-AB (Rüst · Atemschutz · Öl · Schlauch · Dekon-P · Gefahrgut · Einsatzleitung · MZB)", "6.000", "12", "0/0", "Ausbildung an der Einsatzstelle (z. B. AB-Gefahrgut: GW-Gefahrgut)"])}
+          ${tr(["AB-Tank / AB-Lösch / AB-Lüfter / AB-L / AB-Küche / AB-Schiene", "4.000–8.000", "12 / 15", "0/0", "Ausbildung an der Einsatzstelle"])}
+          ${tr(["Dekon-P (Fahrzeug)", "23.100", "25", "1–6", "–"])}
+          ${tr(["GTLF", "10.000", "15", "1–3", "–"])}
+          ${tr(["PTLF 4000 / SLF 75", "10.000", "15", "1–2", "–"])}
+          ${tr(["Tankwagen / Kleintankwagen", "15.000 / 10.000", "15", "1–3", "–"])}
+          ${tr(["GW-Waldbrand · TLF 3000 W / TLF 5000 W · GTLF 10000 W", "5.000–20.000", "25", "0–3", "Wald- und Vegetationsbrandbekämpfung (GW/TLF: alle)"])}
+          ${tr(["Anh. Waldbrand / AB-Waldbrand", "15.000 / 6.000", "20 / 12", "0/0", "Wald- und Vegetationsbrandbekämpfung (mind. 1 an der Einsatzstelle)"])}
+          ${tr(["GW-Tierrettung", "15.000", "25", "2–6", "–"])}
+          ${tr(["Anh. Tierrettung", "6.500", "10", "0/0", "–"])}
+          ${tr(["GW-Verpflegung", "20.000", "25", "3–6", "Feuerwehr-Verpflegungseinheit (min. 1) + Verpflegungshelfer (min. 2)"])}
+          ${tr(["GW-Küche", "35.000", "25", "3", "Feuerwehr-Verpflegungseinheit (min. 1) + Verpflegungshelfer (min. 2)"])}
+          ${tr(["MTW-Verpflegung", "15.000", "13", "6", "Feuerwehr-Verpflegungseinheit (alle)"])}
+          ${tr(["Feldkochherd (FKH) / AB-Küche", "10.000 / 7.000", "15 / 12", "0/0", "Bedienung durch Verpflegungsfahrzeug-Kräfte"])}
+          ${tr(["Logistik: GW-L1 / GW-L2", "8.000 / 12.000", "15 / 25", "1–6", "–"])}
+          ${tr(["Logistik: MTF-L / LF-L", "4.000 / 9.000", "10 / 15", "1–6 / 1–9", "–"])}
+          ${tr(["GW-Lüfter / Anh. Lüfter / AB-Lüfter", "25.000 / 10.000 / 7.000", "25 / 15 / 12", "1–2 / 0/0", "–"])}
+          ${tr(["GW-Werkfeuerwehr", "15.000", "30", "1–9", "Werkfeuerwehr"])}
+          ${tr(["ULF mit Löscharm / TM 50 / Turbolöscher", "12.500–20.000", "25 / 30", "1–3", "Werkfeuerwehr"])}
+          ${tr(["Flugfeldlöschfahrzeug (FLF)", "80.000", "25", "2–3", "Flugfeldlöschfahrzeug-Ausbildung"])}
+          ${tr(["Rettungstreppe", "20.000", "25", "2", "Rettungstreppen-Ausbildung"])}
+          ${tr(["Drohnen: MTF-Drohne / ELW-Drohne / ELW-2-Drohne", "10.000 / 20.000 / 35.000", "15 / 25", "4–6", "Drohnen-Schulung (MTF mind. 4); ELW-2-Drohne zusätzlich ELW 2"])}
+          ${tr(["NEA50 / AB-NEA50 · NEA200 / AB-NEA200", "10.000 / 5.000 · 50.000 / 8.000", "20 / 12", "0/0", "NEA200 bzw. AB-NEA200: NEA200-Fortbildung (mind. 1)"])}
+          ${tr(["MZB (Mehrzweckboot)", "6.000", "12", "0/0", "GW-Wasserrettung – Bedienung durch Wasserrettung-Kräfte"])}
+          ${tr(["Bahnrettung: RW-Schiene / HLF Schiene / AB-Schiene", "18.500 / 30.000 / 7.000", "25 / 15", "1–3 / 1–9 / 0/0", "Bahnrettung (Fahrzeuge: alle)"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h3>🔧 THW</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Einheit / Fachgruppe", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Zugtrupp", "MTW-TZ"])}
-        ${tr(["Bergungsgruppe", "GKW"])}
-        ${tr(["Ortsverband", "MTW-OV"])}
-        ${tr(["Fachgruppe Notversorgung / Notinstandsetzung", "MzGW (FGr N) · NEA50"])}
-        ${tr(["Fachgruppe Räumen", "LKW K 9 · MLW 5 · BRmG R · Anh. DLE"])}
-        ${tr(["Fachgruppe Wassergefahren", "LKW 7 Lkr 19tm · Tauchkraftwagen · Anh. MzAB · Anh. SchlB · Anh. MzB"])}
-        ${tr(["Fachgruppe Ortung (Typ A)", "MTW-O · Anh. Hund"])}
-        ${tr(["Fachgruppe Wasserschaden / Pumpen", "MLW 4 · LKW 7 Lbw (FGr WP) · Anh. 7 · Anh. SwPu"])}
-        ${tr(["Fachgruppe Schwere Bergung", "MzGW SB"])}
-        ${tr(["Fachgruppe Elektroversorgung", "LKW 7 Lbw (FGr E) · NEA 200"])}
-        ${tr(["Trupp UAV", "MTW-Tr UL (+ Drohnen)"])}
-        ${tr(["Fachzug Führung und Kommunikation", "FmKW · FüKomKW · FüKW (THW) · MTW-FGr K"])}
-      </tbody>
-    </table></div>
+    <!-- ============ RETTUNGSDIENST ============ -->
+    <div class="chip-panel" data-panel="rd">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Rettungswache / Kleinwache", "RTW · KTW · NEF · NAW · GRTW · ITW · KdoW LNA / KdoW OrgL"])}
+          ${tr(["Feuerwache mit RD-Erweiterung", "RTW · NEF · KTW · NAW · GRTW · ITW"])}
+          ${tr(["Rettungshubschrauber-Station", "RTH · RTH mit Winde"])}
+        </tbody>
+      </table></div>
 
-    <h3>🧪 SEG</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Ausbau", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Grundausstattung", "KTW Typ B"])}
-        ${tr(["Führung", "ELW 1 (SEG)"])}
-        ${tr(["Sanitätsdienst", "GW-SAN · KTW Typ B · RTW"])}
-        ${tr(["SEG Drohne", "GW UAS"])}
-        ${tr(["Betreuungs- und Verpflegungsdienst", "Bt-LKW · Bt-Kombi · GW-Bt · Anh. FKH"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["Rettungswagen (RTW)", "5.000", "25", "1–2", "–"])}
+          ${tr(["Krankentransportwagen (KTW)", "5.000", "25", "1–2", "–"])}
+          ${tr(["Notarzteinsatzfahrzeug (NEF)", "20.000", "25", "1–2", "Notarzt-Ausbildung (alle)"])}
+          ${tr(["Notarztwagen (NAW)", "25.000", "25", "3 (davon mind. 1 Notarzt)", "Notarzt-Ausbildung (mind. 1)"])}
+          ${tr(["Großraum-Rettungswagen (GRTW)", "25.000", "25", "6 (Schwerverletzt-Modus: mind. 1 Notarzt)", "Notarzt-Ausbildung (mind. 1)"])}
+          ${tr(["Intensivtransportwagen (ITW)", "30.000", "25", "3", "Intensivpflege (mind. 2) + Notarzt-Ausbildung (mind. 1)"])}
+          ${tr(["KdoW LNA", "20.000", "25", "1", "LNA-Ausbildung"])}
+          ${tr(["KdoW OrgL", "20.000", "25", "1", "OrgL-Ausbildung"])}
+          ${tr(["Rettungshubschrauber (RTH)", "300.000", "30", "1–2", "Notarzt-Ausbildung (alle)"])}
+          ${tr(["RTH mit Winde", "400.000", "30", "1–2", "Notarzt-Ausbildung (mind. 1) + Windenoperator (mind. 1)"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h3>🚤 Wasserrettung · 🐕 Rettungshunde · ⛰️ Bergrettung</h3>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Bereich", "Fahrzeuge"])}</thead>
-      <tbody>
-        ${tr(["Wasserrettungswache / Erweiterung", "GW-Wasserrettung · GW-Taucher · MzB (Mehrzweckboot)"])}
-        ${tr(["Seenotrettung", "Seenotrettungsboot · Seenotrettungskreuzer · Hubschrauber (Seenotrettung)"])}
-        ${tr(["Rettungshundestaffel / Erweiterung", "Rettungshundefahrzeug"])}
-        ${tr(["Bergrettungswache", "GW-Bergrettung · GW-Bergrettung (NEF) · ELW Bergrettung · ATV · Hundestaffel (Bergrettung) · Schneefahrzeug · Anh. Höhenrettung · GW-Höhenrettung (Bergwacht)"])}
-      </tbody>
-    </table></div>
+    <!-- ============ POLIZEI ============ -->
+    <div class="chip-panel" data-panel="pol">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Stationierbar an", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Polizeiwache / Kleinwache", "FuStW · Zivilstreifenwagen · FuStW (DGL) · DHuFüKw · GefKw · Polizeimotorrad"])}
+          ${tr(["Autobahnpolizei", "FuStW (AP)"])}
+          ${tr(["Bereitschaftspolizei", "FüKw · LeBefKw · GruKw · GefKw · WaWe 10 · LauKw · SEK-ZF / SEK-MTF · MEK-ZF / MEK-MTF · DHuFüKw · Pferdetransport-Familie"])}
+          ${tr(["Polizei-Sondereinheiten", "SEK-ZF / SEK-MTF · MEK-ZF / MEK-MTF · FüKw"])}
+          ${tr(["Polizeireiterstaffel", "Zugfahrzeug Pferdetransport · Anh. Pferdetransport · Pferdetransporter (klein/groß)"])}
+          ${tr(["Polizeihubschrauber-Station", "Polizeihubschrauber · Polizeihubschrauber mit Winde · Außenlastbehälter"])}
+        </tbody>
+      </table></div>
 
-    <h3>💰 Anschaffungskosten aller Fahrzeuge</h3>
-    <p>Kaufpreise je Fahrzeug-Typ, abgeglichen mit den <strong>Live-Spieldaten</strong> (November 2026). Kosten für Ausbauten und Stellplätze stehen bei den Gebäuden.</p>
-    <h4>Feuerwehr</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
-      <tbody>
-        ${tr(["Mannschaftstransportfahrzeug (MTW)", "2.500", "12"])}
-        ${tr(["Löschgruppenfahrzeug (LF)", "5.000", "25"])}
-        ${tr(["Tanklöschfahrzeug (TLF)", "5.000", "25"])}
-        ${tr(["Wechselladerfahrzeug (WLF)", "5.000", "12"])}
-        ${tr(["Anhänger Schlauch", "5.000", "10"])}
-        ${tr(["Große Tanklöschfahrzeuge (TLF 16/25 u. a.)", "10.000", "15"])}
-        ${tr(["Drehleiter (DLK 23)", "10.000", "30"])}
-        ${tr(["Einsatzleitwagen 1 (ELW 1)", "10.000", "25"])}
-        ${tr(["GW-Öl", "12.000", "25"])}
-        ${tr(["GW-Atemschutz", "11.680", "25"])}
-        ${tr(["Turbolöscher", "12.500", "30"])}
-        ${tr(["Rüstwagen (RW)", "12.180", "25"])}
-        ${tr(["GW-Werkfeuerwehr", "15.000", "30"])}
-        ${tr(["GW-Messtechnik", "18.300", "25"])}
-        ${tr(["GW-Gefahrgut", "19.200", "25"])}
-        ${tr(["GW-Höhenrettung", "19.500", "25"])}
-        ${tr(["Hilfeleistungs-Löschgruppenfahrzeug (HLF)", "20.000", "25"])}
-        ${tr(["ULF mit Löscharm", "20.000", "25"])}
-        ${tr(["TM 50", "20.000", "30"])}
-        ${tr(["Einsatzleitwagen 2 (ELW 2)", "25.500", "25"])}
-        ${tr(["Feuerwehrkran (FwK)", "30.000", "25"])}
-        ${tr(["Kleinlöschfahrzeug (KLF) / Mittlere Löschfahrzeug (MLF)", "5.000", "25"])}
-        ${tr(["HLF 10", "20.000", "25"])}
-        ${tr(["Dekon-P", "23.100", "25"])}
-        ${tr(["GW-Lüfter", "25.000", "25"])}
-        ${tr(["Anh. Lüfter", "10.000", "15"])}
-        ${tr(["AB-Lüfter / AB-Schiene", "7.000", "12 / 15"])}
-        ${tr(["Tankwagen", "15.000", "15"])}
-        ${tr(["Kleintankwagen", "10.000", "15"])}
-        ${tr(["Abrollbehälter (AB-Schlauch, -Öl, -Rüst, -Gefahrgut, -Dekon, -Einsatzleitung)", "6.000", "12"])}
-        ${tr(["Abrollbehälter Logistik (AB-L)", "7.000", "12"])}
-        ${tr(["Logistik: GW-L1 / GW-L2", "8.000 / 12.000", "15 / 25"])}
-        ${tr(["Logistik: MTF-L / LF-L", "4.000 / 9.000", "10 / 15"])}
-        ${tr(["Flugfeldlöschfahrzeug (FLF)", "80.000", "25"])}
-        ${tr(["Rettungstreppe", "20.000", "25"])}
-        ${tr(["PTLF 4000 / SLF", "10.000", "15"])}
-        ${tr(["Verpflegung: GW-Verpflegung", "20.000", "25"])}
-        ${tr(["Verpflegung: GW-Küche", "35.000", "25"])}
-        ${tr(["Verpflegung: MTW-Verpflegung", "15.000", "13"])}
-        ${tr(["Verpflegung: Feldkochherd (FKH) / AB-Küche", "10.000 / 7.000", "15 / 12"])}
-        ${tr(["Waldbrand: GW-Waldbrand", "20.000", "25"])}
-        ${tr(["Waldbrand: TLF 3000 W / TLF 5000 W", "5.000", "25"])}
-        ${tr(["Waldbrand: GTLF 10000 W", "10.000", "25"])}
-        ${tr(["Waldbrand: Anhänger Waldbrand", "15.000", "20"])}
-        ${tr(["Tierrettung: GW-Tierrettung", "15.000", "25"])}
-        ${tr(["Tierrettung: Anhänger Tierrettung", "6.500", "10"])}
-        ${tr(["Bahnrettung: RW-Schiene", "18.500", "25"])}
-        ${tr(["Bahnrettung: HLF Schiene", "30.000", "25"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["Funkstreifenwagen (FuStW)", "5.000", "25", "1–2", "–"])}
+          ${tr(["Zivilstreifenwagen", "5.000", "25", "1–2", "Kriminalpolizei"])}
+          ${tr(["FuStW (Dienstgruppenleitung)", "25.000", "25", "1–2", "Dienstgruppenleitung (mind. 1)"])}
+          ${tr(["FuStW (Autobahnpolizei)", "12.500", "25", "2", "Autobahnpolizei"])}
+          ${tr(["Diensthundeführer-Kraftwagen (DHuFüKw)", "15.000", "10", "1–2", "Hundeführer (Schutzhund)"])}
+          ${tr(["Gefangenenkraftwagen (GefKw)", "13.000", "25", "1–2", "–"])}
+          ${tr(["Polizeimotorrad", "3.000", "10", "1", "Motorradstaffel"])}
+          ${tr(["Leichter Befehlskraftwagen (LeBefKw)", "10.000", "25", "1–3", "Zugführer (LeBefKw)"])}
+          ${tr(["Gruppenkraftwagen (GruKw)", "10.000", "25", "1–9", "–"])}
+          ${tr(["Führungskraftwagen (FüKw)", "17.500", "25", "1–3", "Hundertschaftsführer (FüKw)"])}
+          ${tr(["Wasserwerfer (WaWe 10)", "32.000", "25", "5", "Wasserwerfer"])}
+          ${tr(["Lautsprecherkraftwagen (LauKw)", "32.000", "25", "5", "Lautsprecheroperator"])}
+          ${tr(["SEK-ZF / MEK-ZF", "10.000", "25", "3–4", "SEK bzw. MEK"])}
+          ${tr(["SEK-MTF / MEK-MTF", "10.000", "25", "9", "SEK bzw. MEK"])}
+          ${tr(["Polizeihubschrauber", "300.000", "30", "1–3", "Polizeihubschrauber"])}
+          ${tr(["Polizeihubschrauber mit Winde", "400.000", "30", "1–3", "Polizeihubschrauber (mind. 1) + Windenoperator (mind. 1)"])}
+          ${tr(["Außenlastbehälter", "50.000", "10", "0/0", "Brandbekämpfung (Polizei)"])}
+          ${tr(["Zugfahrzeug Pferdetransport", "5.000", "10", "1–6", "–"])}
+          ${tr(["Anh. Pferdetransport", "15.000", "15", "0/0", "Reiterstaffel (an der Einsatzstelle)"])}
+          ${tr(["Pferdetransporter klein / groß", "20.000 / 120.000", "20 / 25", "2–4 / 2", "Reiterstaffel (Transporter klein: mind. 2)"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h4>Rettungsdienst &amp; SEG</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
-      <tbody>
-        ${tr(["Rettungswagen (RTW)", "5.000", "25"])}
-        ${tr(["Krankentransportwagen (KTW)", "5.000", "25"])}
-        ${tr(["KTW Typ B", "5.000", "25"])}
-        ${tr(["ELW 1 (SEG)", "5.000", "25"])}
-        ${tr(["GW-San", "10.000", "25"])}
-        ${tr(["Gerätewagen Drohne (GW UAS)", "10.000", "15"])}
-        ${tr(["Notarzteinsatzfahrzeug (NEF)", "20.000", "25"])}
-        ${tr(["KdoW LNA / KdoW OrgL", "20.000", "25"])}
-        ${tr(["Anhänger Feldkochherd", "20.000", "15"])}
-        ${tr(["Großraum-Rettungswagen (GRTW)", "25.000", "25"])}
-        ${tr(["Notarztwagen (NAW)", "25.000", "25"])}
-        ${tr(["Rettungshundefahrzeug", "25.000", "25"])}
-        ${tr(["Betreuungskombi", "25.000", "15"])}
-        ${tr(["Intensivtransportwagen (ITW)", "30.000", "25"])}
-        ${tr(["GW-Betreuung", "35.000", "25"])}
-        ${tr(["Betreuungs-LKW (Bt-LKW)", "15.000", "15"])}
-        ${tr(["Technik und Sicherheit: GW-TeSi", "35.000", "25"])}
-        ${tr(["Technik und Sicherheit: LKW Technik (Notstrom)", "30.000", "25"])}
-        ${tr(["Technik und Sicherheit: MTW-TeSi", "20.000", "25"])}
-        ${tr(["Technik und Sicherheit: Anh. TeSi", "10.000", "15"])}
-        ${tr(["MTF-Drohne", "10.000", "15"])}
-        ${tr(["ELW-Drohne", "20.000", "25"])}
-        ${tr(["ELW-2-Drohne", "35.000", "25"])}
-        ${tr(["Rettungshubschrauber mit Winde (RTH Winde)", "400.000", "30"])}
-        ${tr(["Rettungshubschrauber (RTH)", "300.000", "30"])}
-      </tbody>
-    </table></div>
+    <!-- ============ THW ============ -->
+    <div class="chip-panel" data-panel="thw">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Einheit / Fachgruppe", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Zugtrupp", "MTW-TZ"])}
+          ${tr(["Bergungsgruppe", "GKW"])}
+          ${tr(["Ortsverband", "MTW-OV"])}
+          ${tr(["Fachgruppe Notversorgung / Notinstandsetzung", "MzGW (FGr N) · NEA50"])}
+          ${tr(["Fachgruppe Räumen", "LKW K 9 · MLW 5 · BRmG R · Anh. DLE"])}
+          ${tr(["Fachgruppe Wassergefahren", "LKW 7 Lkr 19 tm · Tauchkraftwagen · Anh. MzAB · Anh. SchlB · Anh. MzB"])}
+          ${tr(["Fachgruppe Ortung (Typ A)", "MTW-O · Anh. Hund"])}
+          ${tr(["Fachgruppe Wasserschaden / Pumpen", "MLW 4 · LKW 7 Lbw (FGr WP) · Anh. 7 · Anh. SwPu"])}
+          ${tr(["Fachgruppe Schwere Bergung", "MzGW SB"])}
+          ${tr(["Fachgruppe Elektroversorgung", "LKW 7 Lbw (FGr E) · NEA 200"])}
+          ${tr(["Trupp UAV", "MTW-Tr UL (+ Drohnen)"])}
+          ${tr(["Fachzug Führung und Kommunikation", "FmKW · FüKomKW · FüKW (THW) · MTW-FGr K · Anh. FüLa"])}
+          ${tr(["Fachgruppe Logistik-Verpflegung", "LKW 7 Lbw (FGr Log-V) · MTW-FGr Log-V · Anh. 12 t Ladebordwand"])}
+          ${tr(["Fachgruppe Brückenbau", "MzGW (FGr BrB) · Mobilkran · Anh. Plattform"])}
+        </tbody>
+      </table></div>
 
-    <h4>Polizei</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
-      <tbody>
-        ${tr(["Polizeimotorrad", "3.000", "10"])}
-        ${tr(["FuStW", "5.000", "25"])}
-        ${tr(["FuStW (Dienstgruppenleitung)", "25.000", "25"])}
-        ${tr(["Zivilstreifenwagen", "5.000", "25"])}
-        ${tr(["Diensthundeführerkraftwagen (DHuFüKw)", "15.000", "10"])}
-        ${tr(["Leichter Befehlskraftwagen (LeBefKw)", "10.000", "25"])}
-        ${tr(["Gruppenkraftwagen (GruKw)", "10.000", "25"])}
-        ${tr(["SEK-ZF / SEK-MTF / MEK-ZF / MEK-MTF", "10.000", "25"])}
-        ${tr(["Gefangenenkraftwagen (GefKw)", "13.000", "25"])}
-        ${tr(["Führungskraftwagen (FüKw)", "17.500", "25"])}
-        ${tr(["Wasserwerfer (WaWe 10)", "32.000", "25"])}
-        ${tr(["Lautsprecherkraftwagen (LauKw)", "32.000", "25"])}
-        ${tr(["FuStW (Autobahnpolizei)", "12.500", "25"])}
-        ${tr(["Polizeihubschrauber", "300.000", "30"])}
-        ${tr(["Polizeihubschrauber mit verbauter Winde", "400.000", "30"])}
-        ${tr(["Außenlastbehälter", "50.000", "10"])}
-        ${tr(["Reiterstaffel: Zugfahrzeug Pferdetransport", "5.000", "10"])}
-        ${tr(["Reiterstaffel: Anhänger Pferdetransport", "15.000", "15"])}
-        ${tr(["Pferdetransporter klein", "20.000", "20"])}
-        ${tr(["Pferdetransporter groß", "120.000", "25"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["MTW Technischer Zug (MTW-TZ)", "2.500", "12", "1–4", "Zugtrupp"])}
+          ${tr(["Gerätekraftwagen (GKW)", "13.000", "25", "1–9", "–"])}
+          ${tr(["MTW Ortsverband (MTW-OV)", "15.000", "13", "1–7", "–"])}
+          ${tr(["MLW 5 / LKW K 9", "2.500 / 15.000", "12 / 25", "1–6 / 1–3", "Fachgruppe Räumen"])}
+          ${tr(["BRmG R (Radlader)", "15.000", "25", "0/0", "Fachgruppe Räumen; Zugfahrzeug nötig"])}
+          ${tr(["Anh. Drucklufterzeugung (DLE)", "10.000", "20", "0/0", "–"])}
+          ${tr(["MzGW (FGr Notversorgung)", "15.000", "25", "1–9", "–"])}
+          ${tr(["LKW 7 Lkr 19 tm", "15.000", "25", "1–2", "–"])}
+          ${tr(["Tauchkraftwagen", "10.000", "25", "1–2", "Fachgruppe Bergungstaucher"])}
+          ${tr(["Anh. MzB / Anh. SchlB / Anh. MzAB", "je 6.000", "12", "0/0", "Fachgruppe Wassergefahren"])}
+          ${tr(["MLW 4 / LKW 7 Lbw (FGr WP)", "15.000", "25", "1–7 / 1–3", "Fachgruppe Wasserschaden/Pumpen"])}
+          ${tr(["Anh. 7 t / Anh. Schmutzwasserpumpe (SwPu)", "je 15.000", "25", "0/0", "Fachgruppe Wasserschaden/Pumpen (mind. 1 an der Einsatzstelle)"])}
+          ${tr(["MTW-O (FGr Ortung) / Anh. Hund", "19.000 / 6.000", "13 / 12", "4–5 / 0/0", "Anh. Hund: Fachgruppe Rettungshundeführer"])}
+          ${tr(["MzGW Schwere Bergung (SB)", "15.000", "25", "1–9", "Fachgruppe Schwere Bergung"])}
+          ${tr(["LKW 7 Lbw (FGr Elektroversorgung)", "15.000", "25", "1–3", "Fachgruppe Elektroversorgung"])}
+          ${tr(["NEA 200 (THW)", "50.000", "20", "0/0", "Fachgruppe Elektroversorgung (mind. 1)"])}
+          ${tr(["MTW-Tr UL (Drohnen)", "10.000", "15", "4", "Trupp Unbemannte Luftfahrtsysteme"])}
+          ${tr(["FmKW / FüKomKW / MTW-FGr K", "20.000 / 25.000 / 20.000", "25", "1–7", "Fachzug Führung und Kommunikation"])}
+          ${tr(["FüKW (THW)", "15.000", "15", "1–4", "Fachzug Führung und Kommunikation"])}
+          ${tr(["Anh. Führung und Lage (FüLa)", "10.000", "10", "0/0", "–"])}
+          ${tr(["LKW 7 Lbw (FGr Logistik-Verpflegung)", "15.000", "25", "3", "Verpflegungshelfer (mind. 2) + Logistik-Verpflegung (mind. 1)"])}
+          ${tr(["MTW-FGr Logistik-Verpflegung", "2.500", "12", "5", "Logistik-Verpflegung (alle)"])}
+          ${tr(["Anh. 12 t Ladebordwand", "5.000", "12", "0/0", "Bedienung durch Log-V-Kräfte"])}
+          ${tr(["MzGW (FGr Brückenbau)", "15.000", "25", "6–9", "Fachgruppe Brückenbau"])}
+          ${tr(["Mobilkran", "30.000", "25", "1", "Kranführer (THW)"])}
+          ${tr(["Anh. Plattform (FGr BrB)", "6.000", "12", "0/0", "Fachgruppe Brückenbau (mind. 6 an der Einsatzstelle)"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h4>THW</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
-      <tbody>
-        ${tr(["MTW Technischer Zug (MTW-TZ)", "2.500", "12"])}
-        ${tr(["Mannschaftslastwagen 5 (MLW 5)", "2.500", "12"])}
-        ${tr(["Anh. MzB / Anh. MzAB / Anh. SchlB / Anh. Hund", "6.000", "12"])}
-        ${tr(["Gerätekraftwagen (GKW)", "13.000", "25"])}
-        ${tr(["MTW Ortsverband (MTW-OV)", "15.000", "13"])}
-        ${tr(["MzGW (FGr Notversorgung)", "15.000", "25"])}
-        ${tr(["LKW K 9 (Kipper)", "15.000", "25"])}
-        ${tr(["Radlader groß (BRmG R)", "15.000", "25"])}
-        ${tr(["Anh. Drucklufterzeugung (DLE)", "10.000", "20"])}
-        ${tr(["LKW 7 Lkr 19tm", "15.000", "25"])}
-        ${tr(["LKW 7 Lbw (FGr Wasserschaden/Pumpen)", "15.000", "25"])}
-        ${tr(["Mannschaftslastwagen 4 (MLW 4)", "15.000", "25"])}
-        ${tr(["Anh. Plane/Spriegel 7 t (Anh 7)", "15.000", "25"])}
-        ${tr(["Anh. Schmutzwasserkreiselpumpe (SwPu)", "15.000", "25"])}
-        ${tr(["MzGW Schwere Bergung (SB)", "15.000", "25"])}
-        ${tr(["LKW 7 Lbw (FGr Elektroversorgung)", "15.000", "25"])}
-        ${tr(["FüKW (THW)", "15.000", "15"])}
-        ${tr(["MTW-FGr Ortung (MTW-O)", "19.000", "13"])}
-        ${tr(["Fernmeldekraftwagen (FmKW)", "20.000", "25"])}
-        ${tr(["MTW-FGr Kommunikation", "20.000", "25"])}
-        ${tr(["NEA 50", "10.000", "20"])}
-        ${tr(["Führungs- und Kommunikationskraftwagen (FüKomKW)", "25.000", "25"])}
-        ${tr(["NEA 200", "50.000", "20"])}
-        ${tr(["MTW-Tr UL (Drohnen)", "10.000", "15"])}
-        ${tr(["GW-Wasserrettung / GW-Taucher / Tauchkraftwagen", "10.000", "25"])}
-        ${tr(["Anh. Führung und Lage (FüLa)", "10.000", "10"])}
-        ${tr(["Brückenbau: MzGW (FGr BrB)", "15.000", "25"])}
-        ${tr(["Brückenbau: Mobilkran", "30.000", "25"])}
-        ${tr(["Brückenbau: Anh. Plattform", "6.000", "12"])}
-        ${tr(["Logistik-Verpflegung: LKW 7 Lbw (FGr Log-V)", "15.000", "25"])}
-        ${tr(["Logistik-Verpflegung: MTW-FGr Log-V", "2.500", "12"])}
-        ${tr(["Logistik-Verpflegung: Anh. 12 t Ladebordwand", "5.000", "12"])}
-      </tbody>
-    </table></div>
+    <!-- ============ SEG ============ -->
+    <div class="chip-panel" data-panel="seg">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Ausbau", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Grundausstattung", "KTW Typ B"])}
+          ${tr(["Führung", "ELW 1 (SEG)"])}
+          ${tr(["Sanitätsdienst", "GW-SAN · KTW Typ B · RTW"])}
+          ${tr(["SEG Drohne", "GW UAS (Gerätewagen Drohne)"])}
+          ${tr(["Betreuungs- und Verpflegungsdienst", "Bt-LKW · Bt-Kombi · GW-Bt · Anh. FKH"])}
+          ${tr(["Technik und Sicherheit", "GW-TeSi · LKW Technik (Notstrom) · MTW-TeSi · Anh. TeSi · Anh. NEA 50"])}
+          ${tr(["Wasserrettung / Tauchen", "GW-Wasserrettung · GW-Taucher · MZB"])}
+          ${tr(["Rettungshunde", "Rettungshundefahrzeug"])}
+        </tbody>
+      </table></div>
 
-    <h4>⛰️ Bergrettung &amp; 🚤 Seenotrettung</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
-      <tbody>
-        ${tr(["GW-Bergrettung", "15.000", "15"])}
-        ${tr(["GW-Bergrettung (NEF)", "25.000", "25"])}
-        ${tr(["ELW Bergrettung", "25.000", "25"])}
-        ${tr(["ATV", "5.000", "15"])}
-        ${tr(["Hundestaffel (Bergrettung)", "25.000", "25"])}
-        ${tr(["Schneefahrzeug", "10.000", "15"])}
-        ${tr(["Anh. Höhenrettung (Bergrettung)", "10.000", "10"])}
-        ${tr(["GW-Höhenrettung (Bergrettung)", "25.000", "25"])}
-        ${tr(["Seenotrettungsboot", "50.000", "10"])}
-        ${tr(["Seenotrettungskreuzer", "75.000", "25"])}
-        ${tr(["Hubschrauber (Seenotrettung)", "400.000", "30"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["KTW Typ B", "5.000", "25", "1–2", "–"])}
+          ${tr(["ELW 1 (SEG)", "5.000", "25", "1–2", "SEG – Einsatzleitung"])}
+          ${tr(["GW-San", "10.000", "25", "6", "SEG – GW-San (alle)"])}
+          ${tr(["RTW", "5.000", "25", "1–2", "–"])}
+          ${tr(["GW UAS (Drohne)", "10.000", "15", "4", "Drohnenoperator (Rettungsdienst)"])}
+          ${tr(["GW-Betreuung (GW-Bt)", "35.000", "25", "3", "Betreuungsdienst (mind. 1) + Verpflegungshelfer (mind. 2)"])}
+          ${tr(["Betreuungs-Kombi (Bt-Kombi)", "25.000", "15", "1–9", "Betreuungsdienst"])}
+          ${tr(["Betreuungs-LKW (Bt-LKW)", "15.000", "15", "3", "Betreuungsdienst (mind. 1) + Verpflegungshelfer (mind. 2)"])}
+          ${tr(["Anh. Feldkochherd (SEG)", "20.000", "15", "0/0", "Bedienung durch Betreuungs-Fahrzeug-Kräfte"])}
+          ${tr(["GW-TeSi", "35.000", "25", "1–5", "Technik und Sicherheit"])}
+          ${tr(["LKW Technik (Notstrom)", "30.000", "25", "2–6", "Technik und Sicherheit (mind. 1)"])}
+          ${tr(["MTW-TeSi", "20.000", "25", "1–7", "Technik und Sicherheit (mind. 1)"])}
+          ${tr(["Anh. TeSi / Anh. NEA 50", "je 10.000", "15", "0/0", "Technik und Sicherheit (mind. 2 an der Einsatzstelle)"])}
+          ${tr(["GW-Wasserrettung / GW-Taucher / MZB", "10.000 / 10.000 / 6.000", "25 / 12", "1–6 / 2 / 0/0", "GW-Wasserrettung bzw. GW-Taucher-Lehrgang"])}
+          ${tr(["Rettungshundefahrzeug", "25.000", "25", "4–5", "Rettungshundeführer"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h3>👥 Besatzung &amp; benötigte Lehrgänge</h3>
-    <p>Minimale Besatzung zum Ausrücken, maximale Besatzung und Pflicht-Lehrgang je Fahrzeug (Quelle: offizielles Spiel-Wiki, abgeglichen mit den Live-Spieldaten). Fahrer bzw. Schulabschluss nicht extra eingetragen.</p>
+    <!-- ============ WASSER-/SEENOT-/BERGRETTUNG ============ -->
+    <div class="chip-panel" data-panel="wrbr">
+      <h3>📍 Stationierbar an</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Bereich", "Fahrzeuge"])}</thead>
+        <tbody>
+          ${tr(["Wasserrettungswache", "GW-Wasserrettung · GW-Taucher · MZB (Mehrzweckboot)"])}
+          ${tr(["Seenotrettungswache", "Seenotrettungsboot · Seenotrettungskreuzer"])}
+          ${tr(["Hubschrauberstation (Seenotrettung)", "Hubschrauber (Seenotrettung)"])}
+          ${tr(["Rettungshundestaffel", "Rettungshundefahrzeug"])}
+          ${tr(["Bergrettungswache", "GW-Bergrettung (normal / als NEF) · ELW Bergrettung · ATV · Schneefahrzeug · Hundestaffel (Bergrettung) · GW-Höhenrettung (Bergwacht) · Anh. Höhenrettung"])}
+        </tbody>
+      </table></div>
 
-    <h4>🚒 Feuerwache</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["LF 10 / LF 20 / LF 8/6 · LF 20/16 · LF 10/6 · LF 16 TS", "1", "9", "–"])}
-        ${tr(["TSF-W", "1", "6", "–"])}
-        ${tr(["KLF / MLF", "1", "6", "–"])}
-        ${tr(["HLF 20 / HLF 10", "1", "9", "–"])}
-        ${tr(["TLF 2000 / 3000 / 8/8 / 8/18 / 16/24-Tr · TLF 16 · TLF 16/45 · TLF 20/40 (-SL)", "1", "3", "–"])}
-        ${tr(["TLF 16/25", "1", "6", "–"])}
-        ${tr(["ELW 1", "1", "3", "–"])}
-        ${tr(["ELW 2", "1", "6", "ELW 2"])}
-        ${tr(["SW 1000", "1", "3", "–"])}
-        ${tr(["SW 2000", "1", "6", "–"])}
-        ${tr(["SW 2000-Tr / SW-Kats", "1", "3", "–"])}
-        ${tr(["GW-L2-Wasser", "1", "3", "–"])}
-        ${tr(["DLK 23", "1", "3", "–"])}
-        ${tr(["RW", "1", "3", "–"])}
-        ${tr(["MTW", "1", "9", "–"])}
-        ${tr(["WLF", "1", "3", "Wechsellader"])}
-        ${tr(["FwK (Feuerwehrkran)", "1", "2", "Feuerwehrkran"])}
-        ${tr(["GW-Atemschutz · GW-Öl", "1", "3", "–"])}
-        ${tr(["GW-Gefahrgut", "1", "3", "GW-Gefahrgut"])}
-        ${tr(["GW-Messtechnik", "1", "3", "GW-Messtechnik"])}
-        ${tr(["Dekon-P", "1", "6", "Dekon-P"])}
-        ${tr(["GW-Höhenrettung", "1", "9", "Höhenrettung"])}
-        ${tr(["GW-Werkfeuerwehr · ULF mit Löscharm · TM 50 · Turbolöscher", "1", "3–9", "Werkfeuerwehr"])}
-        ${tr(["FLF (Flugfeldlöschfahrzeug)", "2", "3", "Flugfeldlöschfahrzeug"])}
-        ${tr(["Rettungstreppe", "2", "2", "Rettungstreppen"])}
-        ${tr(["Tankwagen / Kleintankwagen", "1", "3", "–"])}
-        ${tr(["GW-Verpflegung · GW-Küche · MTW-Verpflegung", "3–6", "3–6", "Feuerwehr-Verpflegungseinheit / Verpflegungshelfer"])}
-        ${tr(["GW-Waldbrand · TLF …W · GTLF 10000 W", "0–1", "3", "Wald- und Vegetationsbrandbekämpfung"])}
-        ${tr(["RW-Schiene / HLF-Schiene", "1", "3 / 9", "Bahnrettung"])}
-      </tbody>
-    </table></div>
+      <h3>💰 Preise, Besatzung &amp; Lehrgänge</h3>
+      <div class="tbl-wrap"><table>
+        <thead>${th(["Fahrzeug", "Credits", "Coins", "Besatzung Min–Max", "Pflicht-Lehrgang"])}</thead>
+        <tbody>
+          ${tr(["GW-Wasserrettung", "10.000", "25", "1–6", "GW-Wasserrettung-Lehrgang (alle)"])}
+          ${tr(["GW-Taucher", "10.000", "25", "2", "GW-Taucher-Lehrgang (alle)"])}
+          ${tr(["MZB (Mehrzweckboot)", "6.000", "12", "0/0", "GW-Wasserrettung – Bedienung durch Wasserrettung-Kräfte"])}
+          ${tr(["Seenotrettungsboot", "50.000", "10", "1–2", "–"])}
+          ${tr(["Seenotrettungskreuzer", "75.000", "25", "4–9", "Seenotretter"])}
+          ${tr(["Hubschrauber (Seenotrettung)", "400.000", "30", "3–4", "Hubschrauberpilot (min. 1) + Windenoperator (min. 1) + Wasserrettungsausbildung (min. 1)"])}
+          ${tr(["GW-Bergrettung", "15.000", "15", "3–6", "–"])}
+          ${tr(["GW-Bergrettung (NEF)", "25.000", "25", "3–6", "Notarzt-Ausbildung (mind. 1)"])}
+          ${tr(["ELW Bergrettung", "25.000", "25", "1–3", "Einsatzleiter Bergrettung"])}
+          ${tr(["ATV / Schneefahrzeug", "5.000 / 10.000", "15", "1", "–"])}
+          ${tr(["Hundestaffel (Bergrettung)", "25.000", "25", "4–5", "Rettungshundeführer"])}
+          ${tr(["GW-Höhenrettung (Bergwacht)", "25.000", "25", "4", "Höhenretter"])}
+          ${tr(["Anh. Höhenrettung (Bergrettung)", "10.000", "10", "0/0", "Höhenretter (mind. 4 an der Einsatzstelle); Zugfahrzeug: GW-Bergrettung"])}
+          ${tr(["Rettungshundefahrzeug", "25.000", "25", "4–5", "Rettungshundeführer"])}
+        </tbody>
+      </table></div>
+    </div>
 
-    <h4>🚑 Rettungswache</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["RTW", "1", "2", "–"])}
-        ${tr(["KTW", "1", "2", "–"])}
-        ${tr(["NEF", "1", "2", "Notarzt"])}
-        ${tr(["KdoW LNA / KdoW OrgL", "1", "1", "LNA / OrgL"])}
-        ${tr(["NAW", "3 (davon min. 1 Notarzt)", "3", "Notarzt"])}
-        ${tr(["GRTW", "6 (im Schwerverletzten-Modus min. 1 Notarzt)", "6", "ggf. Notarzt"])}
-        ${tr(["Intensivtransportwagen (ITW)", "3", "3", "–"])}
-        ${tr(["RTH", "1", "2", "Notarzt"])}
-      </tbody>
-    </table></div>
-
-    <h4>🧪 SEG</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["KTW Typ B", "1", "2", "–"])}
-        ${tr(["ELW 1 (SEG)", "1", "2", "SEG-Einsatzleitung"])}
-        ${tr(["GW-San", "6", "6", "SEG-GW-San"])}
-        ${tr(["GW-Wasserrettung", "1", "6", "–"])}
-        ${tr(["GW-Taucher", "2", "2", "GW-Taucher"])}
-        ${tr(["Rettungshundefahrzeug", "4", "5", "Rettungshundeführer"])}
-      </tbody>
-    </table></div>
-
-    <h4>👮 Polizei &amp; Bereitschaftspolizei</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["FuStW", "1", "2", "–"])}
-        ${tr(["Polizeimotorrad", "1", "1", "Motorradstaffel"])}
-        ${tr(["FuStW (Dienstgruppenleitung)", "1", "2", "Dienstgruppenleitung"])}
-        ${tr(["LeBefKw", "1", "3", "Zugführer"])}
-        ${tr(["GruKw", "1", "9", "–"])}
-        ${tr(["FüKw", "1", "3", "Hundertschaftsführer"])}
-        ${tr(["GefKw", "1", "2", "–"])}
-        ${tr(["Wasserwerfer (WaWe 10)", "5", "5", "Wasserwerfer"])}
-        ${tr(["SEK-ZF / MEK-ZF", "3", "4", "SEK / MEK"])}
-        ${tr(["SEK-MTF / MEK-MTF", "9", "9", "SEK / MEK"])}
-        ${tr(["Polizeihubschrauber", "1", "3", "Polizeihubschrauber"])}
-      </tbody>
-    </table></div>
-
-    <h4>🔧 THW</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["GKW", "1", "9", "–"])}
-        ${tr(["MTW-OV", "1", "7", "–"])}
-        ${tr(["MTW-TZ", "1", "4", "Zugtrupp"])}
-        ${tr(["MLW 5 · LKW K 9", "1", "3–6", "Fachgruppe Räumen"])}
-        ${tr(["MzGW (FGr N)", "1", "9", "–"])}
-        ${tr(["LKW 7 Lkr 19tm", "1", "2", "–"])}
-        ${tr(["Tauchkraftwagen", "1", "2", "Bergungstaucher"])}
-        ${tr(["MTW-O · Anh. Hund", "4 (Fahrzeug)", "5", "Fachgruppe Rettungshundeführer"])}
-        ${tr(["MLW 4 · LKW 7 Lbw (FGr WP)", "1", "3–7", "Fachgruppe Wasserschaden/Pumpen"])}
-        ${tr(["LKW 7 Lbw (FGr E)", "1", "3", "Fachgruppe Elektroversorgung"])}
-        ${tr(["MTW-Tr UL", "4", "4", "Trupp Unbemannte Luftfahrtsysteme"])}
-        ${tr(["MzGW (FGr SB)", "1", "9", "Fachgruppe Schwere Bergung"])}
-        ${tr(["FmKW · FüKomKW · MTW-FGr K", "1–4", "4–7", "Fachzug Führung und Kommunikation"])}
-        ${tr(["FüKW (THW)", "1", "4", "Fachzug Führung und Kommunikation"])}
-        ${tr(["Alle Anhänger (BRmG R, DLE, MzB, SchlB, MzAB, SwPu, Anh 7, NEA 50/200, Hund, FüLa)", "0", "0", "Zugfahrzeug nötig; Ausbildungen an der Einsatzstelle"])}
-      </tbody>
-    </table></div>
-
-    <h4>⛰️ Bergrettung &amp; 🚤 Seenotrettung</h4>
-    <div class="tbl-wrap"><table>
-      <thead>${th(["Fahrzeug", "Min.", "Max.", "Verpflichtender Lehrgang"])}</thead>
-      <tbody>
-        ${tr(["GW-Bergrettung (normal / als NEF)", "3", "6", "NEF-Ausführung: Notarzt"])}
-        ${tr(["ELW Bergrettung", "1", "3", "Einsatzleiter Bergrettung"])}
-        ${tr(["ATV · Schneefahrzeug", "1", "1", "–"])}
-        ${tr(["Hundestaffel (Bergrettung)", "4", "5", "Rettungshundeführer"])}
-        ${tr(["GW-Höhenrettung", "4", "4", "Höhenretter"])}
-        ${tr(["Anh. Höhenrettung (Bergrettung)", "0", "0", "Höhenretter; Zugfahrzeug: GW-Bergrettung"])}
-        ${tr(["Seenotrettungsboot", "1", "2", "–"])}
-        ${tr(["Seenotrettungskreuzer", "4", "9", "Seenotretter"])}
-      </tbody>
-    </table></div>
-    <p class="muted">Hinweis: Abrollbehälter (AB) haben keine eigene Besatzung (0/0) – sie werden vom WLF gezogen; die geforderten Ausbildungen müssen an der Einsatzstelle vorhanden sein.</p>
+    <div class="hint">👥 <strong>Merke zu Abrollbehältern:</strong> ABs haben keine eigene Besatzung (0/0) – sie werden vom WLF gezogen; die geforderten Ausbildungen müssen an der Einsatzstelle vorhanden sein. „0/0“-Anhänger sind außerdem an kein Personal-Soll gebunden.</div>
   </section>
   `);
 
