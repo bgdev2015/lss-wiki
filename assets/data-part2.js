@@ -1091,7 +1091,6 @@
     </table></div>
     </div>
 
-    <div class="hint">🎓 Schulen (Feuerwehr-, Rettungs-, Polizei- und THW-Schule) kosten je 500.000 Cr. / 50 Coins, jeder weitere Klassenraum 400.000 Cr. / 40 Coins – Details unter <a href="#personal">Personal &amp; Lehrgänge</a>.</div>
   </section>
   `);
 
