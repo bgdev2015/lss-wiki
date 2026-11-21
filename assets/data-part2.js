@@ -828,11 +828,19 @@
 
   /* ============================== BAUKOSTEN ============================== */
   add("kosten", "🧾", "Baukosten", `
-  <section class="card glass">
+  <section class="card glass" data-chipgroup>
     <h2>Baukosten im Überblick</h2>
     <p>Alle Bau- und Anschaffungskosten (Datenstand: November 2026, LSS-Manager-API &amp; offizielles Wiki). Kauflimits und Preisvorteile durch Premium stehen unter <a href="#premium">Premium</a>.</p>
 
-    <h3>🏗️ Gebäudeneubau (inkl. Kosten je Ausbaustufe)</h3>
+    <div class="chip-row">
+      <button class="chip" data-chip="nb">🏗️ Neubau</button>
+      <button class="chip" data-chip="kf">🏢 Komplex</button>
+      <button class="chip" data-chip="ext">➕ Erweiterungen</button>
+      <button class="chip" data-chip="fzg">🚗 Fahrzeuge</button>
+    </div>
+
+    <div class="chip-panel" data-panel="nb">
+    <h3>🏗️ Gebäude-Neubau (inkl. Kosten je Ausbaustufe)</h3>
     <div class="tbl-wrap"><table>
       <thead>${th(["Gebäude", "Neubau Cr.", "Coins", "Kosten je Stufe"])}</thead>
       <tbody>
@@ -867,7 +875,9 @@
       </tbody>
     </table></div>
     <div class="hint">ℹ️ „Kosten je Stufe“ zeigt die Credits-Sequenz der Ausbaustufen (→ = Übergang). „je“ bedeutet: jede weitere Stufe kostet den gleichen Betrag. „–“: keine Stufen (Sonder- oder Schulgebäude).</div>
+    </div>
 
+    <div class="chip-panel" data-panel="kf">
     <h3>🏢 Gebäudekomplex (Umbau einer bestehenden Wache)</h3>
     <p>Gebäudekomplexe sind <strong>keine Neubauten</strong> – deshalb tauchen sie auch nicht unter den Neubauten in der Gebäudeliste auf. Stattdessen wird eine <strong>bestehende, voll ausgebaute Wache</strong> (Stellplätze ausgebaut) zur „Gebäudekomplex-Basis“ umgebaut, danach werden bis zu vier weitere Wachen im Umkreis von 10&nbsp;km hinzugefügt und der Komplex fertiggestellt. Jeder der drei Schritte kostet den unten genannten Betrag; die Bauzeit der Basis beträgt 24&nbsp;Stunden.</p>
     <div class="tbl-wrap"><table>
@@ -880,7 +890,9 @@
       </tbody>
     </table></div>
     <div class="hint">ℹ️ <strong>Kleiner Komplex:</strong> Basis ist eine Kleinwache; hinzugefügt werden können nur Kleinwachen, max. 1 pro Typ. <strong>Großer Komplex:</strong> Basis ist eine normale Wache; hinzugefügt werden können nur normale Wachen, max. 2 pro Typ (insgesamt max. 4). Nachträgliches Hinzufügen von Wachen ist nicht möglich. Der Ausbau des fertigen Komplexes gibt allen angeschlossenen Wachen zusätzliche Stellplätze – beim großen Komplex bis Stufe 20 (die letzten Stufen kosten laut Forum zusammen rund 19,8 Mio. Cr.). ⚠️ <strong>Hinweis:</strong> Komplexe sind sehr teuer und bringen keinen direkten Spielvorteil – sie fassen mehrere Wachen optisch auf der Karte zu einem Icon zusammen. In der Community gilt: nur für Rein-Optik-/Realbau-Fans sinnvoll.</div>
+    </div>
 
+    <div class="chip-panel" data-panel="ext">
     <h3>➕ Erweiterungen &amp; Ausbauten</h3>
     <div class="tbl-wrap"><table>
       <thead>${th(["Gebäude", "Ausbaustufe", "Kosten", "Bauzeit", "Stellplätze"])}</thead>
@@ -996,6 +1008,9 @@
       </tbody>
     </table></div>
 
+    </div>
+
+    <div class="chip-panel" data-panel="fzg">
     <h3>🚒 Fahrzeuge (Anschaffung)</h3>
     <div class="tbl-wrap"><table>
       <thead>${th(["Fahrzeug", "Credits", "Coins"])}</thead>
@@ -1191,6 +1206,8 @@
         <tr><td>RTH Winde</td><td>400.000 Cr.</td><td>30 Coins</td></tr>
       </tbody>
     </table></div>
+    </div>
+
     <div class="hint">🎓 Schulen (Feuerwehr-, Rettungs-, Polizei- und THW-Schule) kosten je 500.000 Cr. / 50 Coins, jeder weitere Klassenraum 400.000 Cr. / 40 Coins – Details unter <a href="#personal">Personal &amp; Lehrgänge</a>.</div>
   </section>
   `);
