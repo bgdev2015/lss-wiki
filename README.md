@@ -23,7 +23,7 @@ Beliebiges statisches Webhosting funktioniert: IIS, nginx, Apache, GitHub Pages,
 Für lokales Testen liegt `serve.ps1` bei (kleiner PowerShell-HTTP-Server auf Port 8123):
 
 ```powershell
-cd D:\LSS-Wiki-Projekt
+cd <Projektordner>
 powershell -ExecutionPolicy Bypass -File serve.ps1
 # dann Browser öffnen: http://localhost:8123/
 ```
@@ -31,7 +31,7 @@ powershell -ExecutionPolicy Bypass -File serve.ps1
 ## Projektstruktur
 
 ```text
-LSS-Wiki-Projekt/
+lss-wiki/
 ├── index.html            ← Startseite & Grundgerüst
 ├── assets/
 │   ├── style.css         ← Glasoptik-Design (hell/dunkel umschaltbar)
