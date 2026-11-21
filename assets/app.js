@@ -119,8 +119,8 @@
       while (p) {
         const group = p.closest("[data-chipgroup]");
         if (!group) break;
-        group.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.chip === p.dataset.panel));
-        group.querySelectorAll(".chip-panel").forEach(pi => pi.classList.toggle("active", pi.dataset.panel === p.dataset.panel));
+        scopedAll(group, ".chip").forEach(c => c.classList.toggle("active", c.dataset.chip === p.dataset.panel));
+        scopedAll(group, ".chip-panel").forEach(pi => pi.classList.toggle("active", pi.dataset.panel === p.dataset.panel));
         p = group.parentElement ? group.parentElement.closest(".chip-panel") : null;
       }
       el.scrollIntoView({ block: "start" });
@@ -131,11 +131,14 @@
     }
   }
 
-  /* Flache Filter-Chips innerhalb einer Seite */
+  /* Flache & verschachtelte Filter-Chips innerhalb einer Seite */
+  function scopedAll(root, sel) {
+    return Array.from(root.querySelectorAll(sel)).filter(n => n.closest("[data-chipgroup]") === root);
+  }
   function wireChips() {
     app.querySelectorAll("[data-chipgroup]").forEach(group => {
-      const chips = group.querySelectorAll(".chip");
-      const panels = group.querySelectorAll(".chip-panel");
+      const chips = scopedAll(group, ".chip");
+      const panels = scopedAll(group, ".chip-panel");
       const activate = key => {
         chips.forEach(c => c.classList.toggle("active", c.dataset.chip === key));
         panels.forEach(p => p.classList.toggle("active", p.dataset.panel === key));
