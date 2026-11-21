@@ -614,6 +614,9 @@
       <li><strong>Dienstgrade</strong> (z. B. Gruppenführer) schalten zusätzliche Fahrzeugoptionen frei – etwa die Wahl HLF statt LF bei Neubauten.</li>
     </ul>
 
+    <h3>ℹ️ Betreuungshelfer &amp; Verpflegungshelfer – Begriffsklärung</h3>
+    <p>Beim SEG-<a href="#kosten">Betreuungs- und Verpflegungsdienst</a> wird im Spiel zwischen zwei Lehrgängen unterschieden (je <strong>3 Tage</strong>): <strong>„Betreuungsdienst“</strong> (Rettungsdienst/SEG) qualifiziert für die Betreuungs-Fahrzeuge (GW-Bt, Bt-Kombi, Bt-LKW), <strong>„Verpflegungshelfer“</strong> (Feuerwehr, Rettungsdienst, THW) für die Verköstigung. Der umgangssprachliche Begriff <strong>„Betreuungshelfer“</strong> ist <em>kein</em> eigener Lehrgang im Spiel – Spieler meinen damit schlicht Personal mit der Ausbildung „Betreuungsdienst“. Reales Vorbild ist der <strong>Fachdienst Betreuung (B4)</strong> des Katastrophenschutzes (DRK/ASB/Malteser/Johanniter): Unterbringung, Verpflegung und soziale Betreuung von Betroffenen – das Spiel fasst das in den zwei Lehrgängen zusammen.</p>
+
     <h3>Lehrgänge &amp; Schulen</h3>
     <p>Schulen kosten je <strong>500.000 Credits / 50 Coins</strong>, jeder weitere Klassenraum <strong>400.000 Credits / 40 Coins</strong>. Mehr Klassenräume = mehr parallele Lehrgänge.</p>
 
